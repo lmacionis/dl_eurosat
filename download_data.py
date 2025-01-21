@@ -17,7 +17,6 @@ Galite panaudoti davo duomenų rinkinį arba pasiūlytą EuroSAT.
 import os
 import zipfile
 import urllib.request
-from torchsummary import summary
 
 # URL adresas su EuroSAT duomenų rinkiniu
 url = "http://madm.dfki.de/files/sentinel/EuroSAT.zip"
@@ -44,6 +43,3 @@ if not os.path.exists(extract_dir):
     print("Išarchyvavimas baigtas!")
 else:
     print("Duomenys jau išarchyvuoti:", extract_dir)
-
-
-
