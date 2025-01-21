@@ -21,13 +21,20 @@ for i, satelite_class in enumerate(satelite_classes):
     axes[i].imshow(img)
     axes[i].set_title(satelite_class)
     axes[i].axis("off")
-#plt.show()
+plt.show()
 
 
 # Count pictures in every class
 number_dict = {}
 for dir in satelite_classes:
-    lst = os.listdir(path + "//" + dir)
-    number_files = len(lst)
-    number_dict = {dir: number_files}
-    print(number_dict)
+    number_dict[dir] = len(os.listdir(path + "//" + dir))
+    
+print(number_dict)
+
+# Show data in plot bar chart
+plt.bar(number_dict.keys(), number_dict.values())
+plt.xticks(rotation=45)
+plt.ylabel("Imties dydis")
+plt.title("Vaizdų skaičius kiekvienoje klasėje")
+plt.show()
+
