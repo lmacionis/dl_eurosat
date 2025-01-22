@@ -2,7 +2,6 @@ from check_data import *
 import torch
 from torchvision import datasets, transforms
 
-"""https://stackoverflow.com/questions/58151507/why-pytorch-officially-use-mean-0-485-0-456-0-406-and-std-0-229-0-224-0-2"""
 
 N_CHANNELS = 3  # According to RGB 3 channels
 dataset = datasets.ImageFolder(path, transform=transforms.ToTensor())
