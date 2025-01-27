@@ -40,3 +40,15 @@ print(f"Testavimo rinkinys: {len(test_dataset)} vaizdų")
 class EurSatCNN(nn.Module):
     def __init__(self):
         super(EurSatCNN, self).__init__()
+        self.conv1 = nn.Conv2d(3, 2, 2, stride=1, padding=1, padding_mode="reflect")   # RGB 3 Channels, feature countint according to formula, kernel / filter priklauso nuo paveiksliuko dydžio jei mažas imam maža kernel, jei didelis t.y. dideli.
+        self.dropout1 = nn.Dropout(0.2)     # Can increace this according if its underfitting or overfitting
+        self.conv2 = nn.Conv2d(2, 4, 2, stride=1, padding=1, padding_mode="reflect")
+        self.dropout2 = nn.Dropout(0.2)
+        self.conv3 = nn.Conv2d(4, 8, 2, stride=1, padding=1, padding_mode="reflect")
+        self.dropout3 = nn.Dropout(0.2)
+        self.conv4 = nn.Conv2d(8, 16, 2, stride=1, padding=1, padding_mode="reflect")
+        self.dropout4 = nn.Dropout(0.2)
+        self.conv5 = nn.Conv2d(16, 32, 2, stride=1, padding=1, padding_mode="reflect")
+        self.pool = nn.MaxPool2d(2, 2)      # Naudojama sumažinti computational load, bei overfitting. (kernel size, stride). MaxPool naudojamas dažniausiai palyginus su avg ir adptive. 
+        self.fc1 = nn.Linear(32 * 16 * 8 * 4 * 2 * 2, 64)   # Crucial component used to transform the output of a CNN or a RNN into a format that can be used for classification or regression.
+        self.fc2 = nn.Linear(128, len(satelite_classes))

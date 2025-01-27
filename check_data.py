@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 
 satelite_classes = []
-path = "EuroSAT_dataset\\2750"
+path = "EuroSAT_dataset/2750"
 
 for folder in os.listdir(path):
     satelite_classes.append(folder)
