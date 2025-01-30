@@ -1,3 +1,4 @@
 EuroSAT_dataset/
 .venv/
 test.py
+__pycache__/
