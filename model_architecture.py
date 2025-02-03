@@ -29,13 +29,13 @@ train_dataset, val_dataset, test_dataset = random_split(full_dataset, [train_siz
 """Can try to change the batch_size from the data
 https://stats.stackexchange.com/questions/153531/what-is-batch-size-in-neural-network"""
 
-train_loader = DataLoader(train_dataset, batch_size=25, shuffle=True)
-val_loader = DataLoader(val_dataset, batch_size=25, shuffle=False)
-test_loader = DataLoader(test_dataset, batch_size=25, shuffle=False)
+train_loader = DataLoader(train_dataset, batch_size=30, shuffle=True)
+val_loader = DataLoader(val_dataset, batch_size=30, shuffle=False)
+test_loader = DataLoader(test_dataset, batch_size=30, shuffle=False)
 
-print(f"Treniravimo rinkinys: {len(train_dataset)} vaizdų")
-print(f"Validacijos rinkinys: {len(val_dataset)} vaizdų")
-print(f"Testavimo rinkinys: {len(test_dataset)} vaizdų")
+print(f"Training data: {len(train_dataset)} images")
+print(f"Validation data: {len(val_dataset)} images")
+print(f"Testing data: {len(test_dataset)} images")
 
 
 class EurSatCNN(nn.Module):

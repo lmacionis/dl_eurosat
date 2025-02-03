@@ -26,20 +26,20 @@ zip_filename = "EuroSAT.zip"
 
 # Tikriname, ar failas jau parsisiųstas
 if not os.path.exists(zip_filename):
-    print("Parsisiunčiama EuroSAT duomenų rinkinys...")
+    print("Sending EuroSAT dataset...")
     urllib.request.urlretrieve(url, zip_filename)
-    print("Parsisiuntimas baigtas!")
+    print("Downloaded!")
 else:
-    print("Failas jau egzistuoja:", zip_filename)
+    print("File already exists:", zip_filename)
 
 # Nurodome direktoriją, į kurią bus išarchyvuota (galite pakeisti, pvz., į 'EuroSAT_dataset')
 extract_dir = "EuroSAT_dataset"
 
 # Tikriname, ar duomenys jau išarchyvuoti
 if not os.path.exists(extract_dir):
-    print("Išarchyvuojama...")
+    print("Unzip...")
     with zipfile.ZipFile(zip_filename, "r") as zip_ref:
         zip_ref.extractall(extract_dir)
-    print("Išarchyvavimas baigtas!")
+    print("Unziped!")
 else:
-    print("Duomenys jau išarchyvuoti:", extract_dir)
+    print("Already did unzip!:", extract_dir)

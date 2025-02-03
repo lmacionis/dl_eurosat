@@ -6,10 +6,10 @@ from model_architecture import model, train_loader, val_loader
 criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10):
+def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=30):
     # Aptinkame GPU arba CPU
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    print(f"Naudojamas įrenginys: {device}")
+    print(f"Device used: {device}")
 
     # Perkeliame modelį į pasirinktą įrenginį
     model = model.to(device)
@@ -26,7 +26,7 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10
         correct = 0
         total = 0
 
-        for images, labels in tqdm(train_loader, desc=f"Epoch {epoch + 1}/{epoch}"):
+        for images, labels in tqdm(train_loader, desc=f"Epochs {epoch + 1}/{epoch}"):
             # Perkeliame duomenis į GPU arba CPU
             images, labels = images.to(device), labels.to(device)
             optimizer.zero_grad()
@@ -65,9 +65,9 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=10
         val_losses.append(val_loss / len(val_loader))
         val_accuracies.append(100 * correct / total)
 
-        print(f"Epocha {epoch + 1}/{epochs}")
-        print(f"   Treniravimo nuostolis: {train_losses[-1]:.4f}, Tikslumas: {train_accuracies[-1]:.2f}%")
-        print(f"   Validacijos nuostolis: {val_losses[-1]:.4f}, Tikslumas: {val_accuracies[-1]:.2f}%")
+        print(f"Epochs {epoch + 1}/{epochs}")
+        print(f"   Train loss: {train_losses[-1]:.4f}, Accuracy: {train_accuracies[-1]:.2f}%")
+        print(f"   Validation loss: {val_losses[-1]:.4f}, Accuracy: {val_accuracies[-1]:.2f}%")
 
     return train_losses, train_accuracies, val_losses, val_accuracies
 
